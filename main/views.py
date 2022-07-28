@@ -3,6 +3,7 @@ from .models import PostModel
 from .forms import PostCreateForm, PostUpdateForm
 from django.db.models import Q
 
+
 def post_create_view(request):
     form = PostCreateForm()
 
