@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
+
+UserModel = get_user_model()
 
 class PostModel(models.Model):
     title = models.CharField(max_length=255)
@@ -7,7 +10,7 @@ class PostModel(models.Model):
     image = models.ImageField(upload_to='posts/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.title
 

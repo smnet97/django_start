@@ -19,11 +19,14 @@
                         <p class="card-text d-flex justify-content-between align-items-center"><small
                                 class="text-muted">Last updated {{ post.created_at|timesince }}
                             ago</small>
+                            <small>Create by {{ post.user.username }}</small>
                             <span class="">
-                            <a href="{% url 'post_update' id=post.id %}" class="btn btn-info text-white"><i
-                                    class="bi bi-pencil-fill"></i></a>
-                            <a class="btn btn-danger" href="{% url 'post_delete' id=post.id %}"><i
-                                    class="bi bi-trash-fill"></i></a>
+                                {% if post.user.id == request.user.id %}
+                                    <a href="{% url 'post_update' id=post.id %}" class="btn btn-info text-white"><i
+                                            class="bi bi-pencil-fill"></i></a>
+                                    <a class="btn btn-danger" href="{% url 'post_delete' id=post.id %}"><i
+                                            class="bi bi-trash-fill"></i></a>
+                                {% endif %}
                         </span>
                         </p>
                     </div>

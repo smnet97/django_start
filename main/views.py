@@ -13,7 +13,8 @@ def post_create_view(request):
             post = PostModel(
                 title=form.cleaned_data['title'],
                 body=form.cleaned_data['body'],
-                image=form.cleaned_data['image']
+                image=form.cleaned_data['image'],
+                user=request.user
             )
             post.save()
             return redirect('index')

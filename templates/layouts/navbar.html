@@ -7,24 +7,37 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="{% url 'post_create' %}">Create
-                        Post</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Login</a></li>
-                        <li><a class="dropdown-item" href="{% url 'registration' %}">Registration</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="{% url 'post_create' %}">Create
+                            Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="{% url 'logout' %}">
+                            Log out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="{% url 'login' %}">
+                            Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="{% url 'registration' %}">
+                            Registration</a>
+                    </li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            {{ request.user.username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Account</a></li>
+
+                        </ul>
+                    </li>
+                {% endif %}
             </ul>
             {% if request.path == '/' %}
                 <form class="d-flex" role="search" method="get">
