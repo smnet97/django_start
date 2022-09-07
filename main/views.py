@@ -3,7 +3,7 @@ from .models import PostModel
 from user.models import UserModel
 from .forms import PostCreateForm, PostUpdateForm
 from django.db.models import Q
-
+from django.utils.translation import gettext_lazy as _
 
 def post_create_view(request):
     form = PostCreateForm()
@@ -26,7 +26,7 @@ def post_create_view(request):
 
 
 def home_view(request):
-    request.title = 'home page'
+    request.title = _('home page')
     posts = PostModel.objects.all().order_by('-id')
     users = UserModel.objects.all()
     search = request.GET.get('q', '')

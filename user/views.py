@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm, UserLoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 def logout_view(request):
@@ -18,10 +19,10 @@ def login_view(request):
                                 password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                messages.info(request, f'Salom {request.user} xush kelibsiz !')
+                messages.info(request, _(f'Hi {request.user} welcome !'))
                 return redirect('index')
-            form.add_error("password","Username yoki parol noto\'g\'ri")
-    request.title = 'Login'
+            form.add_error("password", _("Username or password is incorrect"))
+    request.title = _('Login')
     return render(request, 'login.html', context={
         'form': form
     })
@@ -33,12 +34,12 @@ def registration_view(request):
             data = form.save(commit=False)
             data.password = make_password(data.password)
             data.save()
-            messages.success(request, 'Tabrikliman siz muvaffaqiyatli ro\'yxatdan o\'tdingiz !')
+            messages.success(request, _('Congratulations, you have successfully registered !'))
             return redirect('login')
         else:
-            messages.error(request, "Xato !")
+            messages.error(request, _("Error !"))
 
-    request.title = 'Registration'
+    request.title = _('Registration')
     return render(request, 'registration.html', context={
         'form': form
     })
