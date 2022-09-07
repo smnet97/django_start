@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import PostModel
+from user.models import UserModel
 from .forms import PostCreateForm, PostUpdateForm
 from django.db.models import Q
 
@@ -27,17 +28,21 @@ def post_create_view(request):
 def home_view(request):
     request.title = 'home page'
     posts = PostModel.objects.all().order_by('-id')
+    users = UserModel.objects.all()
     search = request.GET.get('q', '')
     if search:
         posts = posts.filter(Q(title__icontains=search) | Q(body__icontains=search))
 
     return render(request, 'index.html', context={
-        'posts': posts
+        'posts': posts,
+        'users': users
     })
 
 
 def post_detail_view(request, id):
     post = PostModel.objects.get(id=id)
+    post.post_view = post.post_view + 1
+    post.save()
     return render(request, 'post-detail.html', context={
         'post': post
     })

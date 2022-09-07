@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.contrib import messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -18,6 +19,7 @@ INSTALLED_APPS = [
 
     "crispy_forms",
     "crispy_bootstrap5",
+    "debug_toolbar",
 
     'main',
     'user',
@@ -31,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -106,3 +109,13 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # AUTH_USER_MODEL = 'user.UserModel'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+MESSAGE_TAGS = {
+    messages.INFO: 'alert alert-info',
+    messages.ERROR: 'alert alert-danger',
+    messages.SUCCESS: 'alert alert-success'
+}

@@ -11,6 +11,7 @@ class PostModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, null=True)
+    post_view = models.IntegerField(default=0)
     def __str__(self):
         return self.title
 

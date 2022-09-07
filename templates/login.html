@@ -7,6 +7,18 @@
 {% block content %}
     <div class="row">
         <div class="col-6 offset-3">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3">
             <h1>{{ request.title }}</h1>
             <form action="" method="post">
                 {% csrf_token %}
