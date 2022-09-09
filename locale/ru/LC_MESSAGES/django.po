@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-07 10:02+0000\n"
+"POT-Creation-Date: 2022-09-09 11:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,27 +32,27 @@ msgstr "Последнее обновление"
 msgid "ago"
 msgstr "назад"
 
-#: templates/layouts/navbar.html:14
+#: templates/layouts/navbar.html:16
 msgid "Create Post"
 msgstr "Создать сообщение"
 
-#: templates/layouts/navbar.html:19
+#: templates/layouts/navbar.html:21
 msgid "Log out"
 msgstr "Выйти"
 
-#: templates/layouts/navbar.html:25 templates/login.html:27 user/views.py:25
+#: templates/layouts/navbar.html:27 templates/login.html:27 user/views.py:25
 msgid "Login"
 msgstr "Авторизоваться"
 
-#: templates/layouts/navbar.html:30 user/views.py:42
+#: templates/layouts/navbar.html:32 user/views.py:42
 msgid "Registration"
 msgstr "Регистрация"
 
-#: templates/layouts/navbar.html:43
+#: templates/layouts/navbar.html:45
 msgid "Account"
 msgstr "Account ru"
 
-#: templates/layouts/navbar.html:55
+#: templates/layouts/navbar.html:80
 msgid "Search"
 msgstr "Поиск"
 
@@ -64,9 +64,26 @@ msgstr "Сохранять"
 msgid "Update"
 msgstr "Обновлять"
 
+#: user/forms.py:10 user/models.py:6
+msgid "username"
+msgstr ""
+
+#: user/forms.py:11 user/models.py:9
+msgid "password"
+msgstr ""
+
+#: user/models.py:7
+msgid "first name"
+msgstr ""
+
+#: user/models.py:8
+msgid "last name"
+msgstr ""
+
 #: user/views.py:22
-#, python-brace-format
-msgid "Hi %(request.user) welcome !"
+#, fuzzy, python-brace-format
+#| msgid "Hi %(request.user) welcome !"
+msgid "Hi {request.user} welcome !"
 msgstr "Привет %(request.user) добро пожаловать!"
 
 #: user/views.py:24

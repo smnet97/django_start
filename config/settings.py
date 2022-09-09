@@ -5,11 +5,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-z*(94i^_!@+_84%%@g!un@m(v*6w$)d^$eskh$8jrlfuvinn53'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -92,6 +93,8 @@ LANGUAGES = (
     ('uz', '🇺🇿 Uzbek'),
     ('ru', '🇷🇺 Russian')
 )
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 TIME_ZONE = 'UTC'
 

@@ -4,7 +4,10 @@ from user.models import UserModel
 from .forms import PostCreateForm, PostUpdateForm
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def post_create_view(request):
     form = PostCreateForm()
 
@@ -48,11 +51,13 @@ def post_detail_view(request, id):
     })
 
 
+@login_required
 def post_delete_view(request, id):
     PostModel.objects.get(id=id).delete()
     return redirect('index')
 
 
+@login_required
 def update_post_view(request, id):
     instance = get_object_or_404(PostModel, id=id)
     form = PostUpdateForm(data=request.POST or None, files=request.FILES or None, instance=instance)

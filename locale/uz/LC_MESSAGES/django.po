@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-07 10:02+0000\n"
+"POT-Creation-Date: 2022-09-09 11:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,27 +30,27 @@ msgstr "Oxirgi yangilanish"
 msgid "ago"
 msgstr "oldin"
 
-#: templates/layouts/navbar.html:14
+#: templates/layouts/navbar.html:16
 msgid "Create Post"
 msgstr "Post yaratish"
 
-#: templates/layouts/navbar.html:19
+#: templates/layouts/navbar.html:21
 msgid "Log out"
 msgstr "Chiqish"
 
-#: templates/layouts/navbar.html:25 templates/login.html:27 user/views.py:25
+#: templates/layouts/navbar.html:27 templates/login.html:27 user/views.py:25
 msgid "Login"
 msgstr "Kirish"
 
-#: templates/layouts/navbar.html:30 user/views.py:42
+#: templates/layouts/navbar.html:32 user/views.py:42
 msgid "Registration"
 msgstr "Ro'yxatdan o'tish"
 
-#: templates/layouts/navbar.html:43
+#: templates/layouts/navbar.html:45
 msgid "Account"
 msgstr "Akkount"
 
-#: templates/layouts/navbar.html:55
+#: templates/layouts/navbar.html:80
 msgid "Search"
 msgstr "Qidirish"
 
@@ -62,9 +62,26 @@ msgstr "Saqlash"
 msgid "Update"
 msgstr "Yangilash"
 
+#: user/forms.py:10 user/models.py:6
+msgid "username"
+msgstr "Foydalanuvchi nomi"
+
+#: user/forms.py:11 user/models.py:9
+msgid "password"
+msgstr "Parol"
+
+#: user/models.py:7
+msgid "first name"
+msgstr ""
+
+#: user/models.py:8
+msgid "last name"
+msgstr ""
+
 #: user/views.py:22
-#, python-brace-format
-msgid "Hi %(request.user) welcome !"
+#, fuzzy, python-brace-format
+#| msgid "Hi %(request.user) welcome !"
+msgid "Hi {request.user} welcome !"
 msgstr "Salom %(request.user) xush kelibsiz !"
 
 #: user/views.py:24
