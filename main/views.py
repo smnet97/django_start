@@ -15,7 +15,9 @@ def post_create_view(request):
         form = PostCreateForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             post = PostModel(
-                title=form.cleaned_data['title'],
+                title_uz=form.cleaned_data['title_uz'],
+                title_ru=form.cleaned_data['title_ru'],
+                title_en=form.cleaned_data['title_en'],
                 body=form.cleaned_data['body'],
                 image=form.cleaned_data['image'],
                 user=request.user
