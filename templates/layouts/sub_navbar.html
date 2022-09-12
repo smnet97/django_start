@@ -1,0 +1,14 @@
+{% load mytags %}
+<div class="">
+    <div class="container py-4">
+        <ul class="nav nav-pills">
+
+            {% category_info request as info %}
+            {% for cat in info %}
+                <li class="nav-item me-3">
+                    <a class="nav-link {% if cat.id == request.session.current_cat_id %}active{% endif %}" aria-current="page" href="{% url 'category' id=cat.id %}">{{ cat.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

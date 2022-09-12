@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import PostModel
+from .models import PostModel, CategoryModel
 from user.models import UserModel
 from .forms import PostCreateForm, PostUpdateForm
 from django.db.models import Q
@@ -36,8 +36,9 @@ def home_view(request):
     request.title = _('home page')
     default_page = 1
     page = request.GET.get('page', default_page) # {'page': 2}
+    request.session['categories'] = list(CategoryModel.objects.all().values_list('id', flat=True)) # [1, 2, 3]
 
-    paginator = Paginator(PostModel.objects.all().order_by('-id'), 1)
+    paginator = Paginator(PostModel.objects.all().order_by('-id'), 4)
     try:
         items_page = paginator.page(page) # [1, 2, 3, 4, 5, 6] [ 3, 4,]
     except PageNotAnInteger:
@@ -53,6 +54,13 @@ def home_view(request):
         'posts': items_page,
     })
 
+
+def category_view(request, id):
+    posts = PostModel.objects.filter(category=id)
+    request.session['current_cat_id'] = id
+    return render(request, 'index.html', context={
+        'posts': posts
+    })
 
 def post_detail_view(request, id):
     post = PostModel.objects.get(id=id)

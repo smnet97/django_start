@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     {% block title %}
     {% endblock %}
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
@@ -11,6 +12,11 @@
 </head>
 <body>
 {% include 'layouts/navbar.html' %}
+{% include 'layouts/sub_navbar.html' %}
+{#{% category_info request as info %}#}
+{#{% for i in info %}#}
+{#    <span>{{ i }}</span>#}
+{#{% endfor %}#}
 <div class="container py-4">
     {% block content %}
 
