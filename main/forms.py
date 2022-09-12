@@ -9,8 +9,10 @@ class PostCreateForm(forms.ModelForm):
         super(PostCreateForm, self).__init__(*args, **kwargs)
         print(type(self.fields))
         for k, v in self.fields.items():
-
-            self.fields[k].required = False
+            if k == 'image':
+                self.fields[k].required = True
+            else:
+                self.fields[k].required = False
         # self.fields['title_uz'].required = True
         # self.fields['title_en'].required = True
         # self.fields['body'].required = False

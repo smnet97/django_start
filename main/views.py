@@ -6,6 +6,8 @@ from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.decorators import login_required
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 @login_required
 def post_create_view(request):
@@ -32,15 +34,23 @@ def post_create_view(request):
 
 def home_view(request):
     request.title = _('home page')
-    posts = PostModel.objects.all().order_by('-id')
-    users = UserModel.objects.all()
+    default_page = 1
+    page = request.GET.get('page', default_page) # {'page': 2}
+
+    paginator = Paginator(PostModel.objects.all().order_by('-id'), 1)
+    try:
+        items_page = paginator.page(page) # [1, 2, 3, 4, 5, 6] [ 3, 4,]
+    except PageNotAnInteger:
+        items_page = paginator.page(default_page)
+    except EmptyPage:
+        items_page = paginator.page(paginator.num_pages)
     search = request.GET.get('q', '')
     if search:
-        posts = posts.filter(Q(title__icontains=search) | Q(body__icontains=search))
+        pass
+        # posts = posts.filter(Q(title__icontains=search) | Q(body__icontains=search))
 
     return render(request, 'index.html', context={
-        'posts': posts,
-        'users': users
+        'posts': items_page,
     })
 
 
