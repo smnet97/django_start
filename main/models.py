@@ -32,3 +32,18 @@ class PostModel(models.Model):
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'
+
+
+class BannerModel(models.Model):
+    title = models.TextField()
+    button_text = models.CharField(max_length=255)
+    banner = models.ImageField(upload_to='banner/')
+    post_url = models.URLField()
+
+
+    def __str__(self):
+        return f"{self.button_text}"
+
+    class Meta:
+        verbose_name = 'banner'
+        verbose_name_plural = 'banners'

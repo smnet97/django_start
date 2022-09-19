@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import PostModel, CategoryModel
+from .models import PostModel, CategoryModel, BannerModel
 from modeltranslation.admin import TranslationAdmin
 
+
+admin.site.register(BannerModel)
 
 @admin.register(CategoryModel)
 class CategoryAdmin(admin.ModelAdmin):
